@@ -2,6 +2,7 @@
 //const exphbs = require('express-handlebars');
 //const path = require('path');
 const morgan = require('morgan');
+require('./database');
 //
 //const app = express();
 
