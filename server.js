@@ -31,39 +31,43 @@ app.engine(".hbs", exphbs({
 
 
 
-const hbs = require('hbs');
-require('./hbs/helpers');
-
-
-app.use(express.static(__dirname + '/public'));
-//el hbs serbira para hacer el contenido dinamico
-// esto es para tener todos los registros parciales
-hbs.registerPartials(__dirname + '/views/parciales')
-app.set('view engine', 'hbs');
 
 
 
-app.get('/', (req, res) => {
-    //res.send('Hola mundo');
+//app.set('views', path.join(__dirname, 'views'));
+//
+//app.engine('.hbs', exphbs({
+//    defaultLayout: 'main',
+//    layoutsDir: path.join(app.get('views'), 'layouts'),
+//    partialsDir: path.join(app.get('views'), 'partials'),
+//    extname: '.hbs'
+//}));
+//para ocupar el ingine
 
-    //    let salida = {
-    //            nombre: 'Damian',
-    //            edad: 22,
-    //            url: req.url
-    //        }
-    //hace que la peticion salga
-    //res.send(salida);
-    res.render('index', {
-        nombre: 'fernaNdo HerrerrA',
+app.set('view engine', '.hbs');
 
-    });
-});
+//middlewares estos son funciones que se ejecutan para hacer peticiones
+app.use(morgan('dev'));
+//hace posible que el servidor entienda los objetos enviados desde el html
+app.use(express.urlencoded({ extended: false }));
 
 
-app.get('/about', (req, res) => {
-    res.render('about');
-});
+//variagles globales
 
+
+//rutas
+//app.get('/', (req, res) => {
+//    res.render('index');
+//})
+// va a buscar aqui las rutas
+app.use(require('./routes/index.routes'));
+app.use(require('./routes/notes.routes'));
+
+//static files  //aqui puedes dejar de ocupar el direccionamiento todo te lleva
+// a esta ruta por defecto
+app.use(express.static(path.join(__dirname, 'public')));
+//esta linea es para que sepa que ahi esta la carpeta publica
+app.use(express.static(path.join(__dirname + 'views')));
 
 app.listen(port, () => {
     /// nota si no jala cambiar el puerto xd
