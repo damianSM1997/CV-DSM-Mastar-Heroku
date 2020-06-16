@@ -4,17 +4,18 @@ const { Mongoose } = require("mongoose");
 const { Schema, model } = require('mongoose');
 
 const NoteSchema = new Schema({
-    //title: {
-    //    type: String,
-    //    required: true
-    //},
     description: {
         type: String,
-        required: true,
+        required: true
+
     },
-    email: { type: String },
-    comment: { type: String },
-    name: { type: String },
+    //email: { type: String, required: true },
+    email: { type: String, required: true },
+    gravatar: { type: String },
+    name: { type: String, required: true },
+    timestamps: { type: Date, default: Date.now },
+    //pistola: { type: Number, required: true }
+
 
     //comentaro_id: { type: ObjectId },
     //
@@ -23,10 +24,6 @@ const NoteSchema = new Schema({
     //gravatar: { type: String },
     //comment: { type: String },
     //timestamp: { type: Date, default: Date.now }
-
-
-}, {
-    timestamps: true
 });
 
 

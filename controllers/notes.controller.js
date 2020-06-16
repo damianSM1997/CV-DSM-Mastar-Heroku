@@ -1,4 +1,5 @@
 const notesCtrl = {};
+const md5 = require('md5');
 
 // Models
 const Note = require("../models/Note");
@@ -18,18 +19,25 @@ notesCtrl.renderNoteForm = (req, res) => {
 notesCtrl.createNewNote = async(req, res) => {
     //// gracias al res.body se puede tomar su informacion
 
-    const { title, description } = req.body;
-    const newNote = new Note({
+    //const { title, description, name, email, timestamps, gravatar } = req.body;
+    //
+    //
+    //const newNote = new Note({
+    //    email,
+    //    name,
+    //    title,
+    //    description,
+    //    timestamps,
+    //    gravatar,
+    //})
 
+    const newNote = new Note(req.body);
+    newNote.gravatar = md5(newNote.email);
 
-        title,
-        description
-    })
-
-    //para guardarlos se pueden guadar en nuestra db
-    // como se tardare un buen rato entonces tiene que ser
-    // una funcion acincrona
     await newNote.save();
+
+    console.log(newNote.email);
+    console.log(newNote.name);
     console.log(newNote);
     //
     res.render('notes/new-note1')
@@ -41,7 +49,7 @@ notesCtrl.renderNotes = async(req, res) => {
     //esto tiene que cambiar
     //   res.render('notes/new-note');
     //crea un areglo de notas
-    const notes = await Note.find();
+    const notes = await Note.find().sort({ timestamps: -1 });
     res.render("notes/all-notes", { notes });
     //res.render("notes/all-notes", { notes });
 }
