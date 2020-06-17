@@ -11,74 +11,77 @@ con esta linea se pasa todo
   <div class="container ">
     <div class="content-center topmargin-xs">
       <div class="card mt-2">
-  <div class="card-header d-flex justify-content-between aling-items-center">
-        
-        <div class="card-body ">
-          <button class="btn btn-info " id="btn-toggle-comment">
-            <i class="fa fa-comment-o"></i> Comentar
-        </button>
+        <div class="card-header d-flex justify-content-between aling-items-center">
+
+          <div class="card-body ">
+            <button class="btn btn-info " id="btn-toggle-comment">
+              <i class="fa fa-comment-o"></i> Comentar
+            </button>
+
+            <p class="text-center text-dark">favor de llenar todos los datos del formulario</p>
+          </div>
+        </div>
+
+
+
+        <div class="card-body">
+
+          <blockquote id="post-comment">
+
+
+            <div class="card-body">
+              <form action="notes" method="POST" id="formulario">
+
+                <div class="form-group">
+                  <input type="text" class="form-control" name="name" placeholder="Nombre">
+
+                </div>
+                <div class="form-group">
+                  <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" name="email" placeholder="Email">
+                </div>
+
+
+                <div class="form-group"></div>
+                <button class="btn btn-success" id="btn-comment">
+
+                  <i class="fa fa-comment" id="publicar"></i>Publicar
+                </button>
+            </div>
+
+            </form>
 
         </div>
-    </div>
-
-  
-
-  <div class="card-body">
-    <blockquote id="post-comment">
-
-      <div class="card-body">
-        <form action="notes" method="POST">
-
-          <div class="form-group">
-            <input type="text" class="form-control" name="name" placeholder="Nombre">
-
-          </div>
-          <div class="form-group">
-            <textarea name="description" class="form-control" placeholder="Description"></textarea>
-          </div>
-
-          <div class="form-group">
-            <input type="text" class="form-control" name="email" placeholder="Email">
-          </div>
-
-
-          <div class="form-group"></div>
-          <button class="btn btn-success" id="btn-comment">
-
-            <i class="fa fa-comment"></i>Publicar
-          </button>
-      </div>
-      
-      </form>
-      
-  </div>
-  </blockquote>
-  <ul class="list-group p-4 text-dark text-left">
-    {{#each notes}}
-    <li class="list-group-item">
-
-
-      <div>
-        <a href="" class="col-2 text-center">
-          <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="">
-        </a>{{name}} 
-        <blockquote class="col">
-          <p class="lead  text-dark">{{description}}</p>
-
         </blockquote>
-        <footer>
-          <!--<p class="text-dark">{{email}}</p>
-          -->
-           <p class="text-dark text-right">{{timeago timestamps}}</p>
-        </footer>
-      </div>
-    </li>
-    {{/each}}
-  </ul>
+        <ul class="list-group p-4 text-dark text-left">
+          {{#each notes}}
+          <li class="list-group-item">
 
-</div>
-</div>
+
+            <div>
+              <a href="" class="col-2 text-center">
+                <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="">
+              </a>{{name}}
+              <blockquote class="col">
+                <p class="lead  text-dark">{{description}}</p>
+
+              </blockquote>
+              <footer>
+                <!--<p class="text-dark">{{email}}</p>
+          -->
+                <p class="text-dark text-right">{{timeago timestamps}}</p>
+              </footer>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+
+      </div>
     </div>
+  </div>
   </div>
 </section>
 

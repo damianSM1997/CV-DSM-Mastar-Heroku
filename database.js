@@ -8,8 +8,9 @@ let urlDB;
 if (process.env.NODE_ENV === 'dev') {
     urlDB = 'mongodb://localhost/notes-app'
 } else {
-    urlDB = 'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/notasCV?retryWrites=true&w=majority'
-        //urlDB = process.env.MONGO_URI;
+    urlDB = MONGODB;
+    //'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/notasCV?retryWrites=true&w=majority'
+    //urlDB = process.env.MONGO_URI;
 }
 process.env.URLDB = urlDB;
 

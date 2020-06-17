@@ -34,13 +34,25 @@ notesCtrl.createNewNote = async(req, res) => {
     const newNote = new Note(req.body);
     newNote.gravatar = md5(newNote.email);
 
-    await newNote.save();
+    if (newNote.email === '' || newNote.name === '' || newNote.description === '') {
+
+        //res.redirect('/notes')
+        alert('Tweet eliminado')
+    }
+    if (newNote.email === '') {
+        res.send('vasio')
+    } else {
+        res.send('si entro :c')
+            //await newNote.save();
+    }
+
+
 
     console.log(newNote.email);
     console.log(newNote.name);
     console.log(newNote);
     //
-    res.render('notes/new-note1')
+    //res.render('notes/new-note1')
 }
 
 //creara todas las notdas, mas bien msotrara
