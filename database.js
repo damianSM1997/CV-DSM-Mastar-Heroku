@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
 
+
+
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 
 let urlDB;
+let urlDB1;
 
 if (process.env.NODE_ENV === 'dev') {
     urlDB = 'mongodb://localhost/notes-app'
 } else {
-    urlDB = MONGO_URI;
+    urlDB = process.env.MONGO_URI;
     //'mongodb+srv://damian:MI0E1zcZXQP20IwK@cluster0-naamb.mongodb.net/notasCV?retryWrites=true&w=majority'
     //urlDB = process.env.MONGO_URI;
 }
