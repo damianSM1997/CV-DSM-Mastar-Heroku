@@ -42,8 +42,9 @@ notesCtrl.createNewNote = async(req, res) => {
     if (newNote.email === '') {
         res.send('vasio')
     } else {
-        res.send('si entro :c')
-            //await newNote.save();
+        //res.send('si entro :c')
+        await newNote.save();
+        res.render('notes/new-note1');
     }
 
 
@@ -52,7 +53,8 @@ notesCtrl.createNewNote = async(req, res) => {
     console.log(newNote.name);
     console.log(newNote);
     //
-    //res.render('notes/new-note1')
+    //await newNote.save();
+    //
 }
 
 //creara todas las notdas, mas bien msotrara

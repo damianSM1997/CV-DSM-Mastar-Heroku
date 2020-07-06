@@ -7,7 +7,12 @@ con esta linea se pasa todo
 -->
 
 
-<section id="hero" class=" text-dark">
+
+
+
+
+<section id="hero">
+
   <div class="container ">
     <div class="content-center topmargin-xs">
       <div class="card mt-2">
@@ -22,38 +27,34 @@ con esta linea se pasa todo
 
 
 
-        <div class="card-body">
+        <blockquote id="post-comment">
 
-          <blockquote id="post-comment">
+
+          <form action="notes" method="POST" id="formulario">
 
             <p class="text-center text-dark">Favor de llenar todos los datos del formulario</p>
             <div class="card-body">
               <form action="notes" method="POST" id="formulario">
 
                 <div class="form-group">
-                  <input type="text" class="form-control" name="name" placeholder="Nombre">
-
+                  <input id="asunto" type="text" class="form-control" name="name" placeholder="Nombre">
                 </div>
                 <div class="form-group">
-                  <textarea name="description" class="form-control" placeholder="Comentario"></textarea>
+                  <textarea id="mensaje" name="description" class="form-control" placeholder="Comentario"></textarea>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control" name="email" placeholder="Email">
+                  <input id="email" type="email" name="email" class="form-control" placeholder="Email">
                 </div>
+                <div class="col s6 ">
+                  <button class="btn btn-success " id="enviar">
+                    <i class="fa fa-comment-o"></i> Comentar
+                  </button>
+                </div>
+              </form>
 
-
-                <div class="form-group"></div>
-                <button class="btn btn-success" id="btn-comment">
-
-                  <i class="fa fa-comment" id="publicar"></i>Publicar
-                </button>
-            </div>
-
-            </form>
-
-        </div>
         </blockquote>
+        <!--.contenido-->
         <ul class="list-group p-4 text-dark text-left">
           {{#each notes}}
           <li class="list-group-item">
@@ -76,18 +77,32 @@ con esta linea se pasa todo
           </li>
           {{/each}}
         </ul>
-
       </div>
     </div>
-  </div>
-  </div>
 </section>
 
 
 
 
 
+
 <!--
+
+                 <div class="row" id="loaders">
+
+              <img id="spinner" src="img/spinner.gif" width="150">
+            </div>
+            <div class="row text-primary">
+              <div class="col s6 ">
+                <button class="btn btn-info " id="enviar">
+                  <i class="fa fa-comment-o"></i> Comentar
+                </button>
+              </div>
+                  <div class="col s2">
+                <button id="resetBtn" class="btn waves-effect waves-light light-blue darken-2" type="submit">Reset
+                  <i class="material-icons right">delete</i>
+                </button>
+              </div>
 
     <form action="/images/comment" method="POST"></form>
 

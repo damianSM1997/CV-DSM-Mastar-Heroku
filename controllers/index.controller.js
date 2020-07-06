@@ -34,4 +34,12 @@ indexCtrl.renderNewNote = (req, res) => {
     res.render('new-note');
 }
 
+
+indexCtrl.renderFormulario = (req, res) => {
+    res.render('formulario2');
+}
+
+
+
+
 module.exports = indexCtrl;
